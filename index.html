@@ -35,13 +35,15 @@
     }
     .product {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       gap: 20px;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
     .product img {
       width: 100px;
       height: 100px;
+      flex-shrink: 0;
       border-radius: 10px;
       object-fit: cover;
     }
@@ -126,6 +128,52 @@
       display: block;
       margin-top: 10px;
     }
+    @media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .section {
+    padding: 1rem;
+    margin: 1rem auto;
+  }
+
+  .product {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .product img {
+    width: 100%;
+    height: auto;
+  }
+
+  input, select, textarea, button {
+    font-size: 16px;
+  }
+
+  .chat-window {
+    width: 90%;
+    right: 5%;
+  }
+
+  .chat-button {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+
+  .admin-section {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  footer {
+    font-size: 14px;
+    padding: 1rem 0.5rem;
+  }
+      }
   </style>
 </head>
 <body>
