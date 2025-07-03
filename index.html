@@ -1,82 +1,389 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title>Wax &amp; Wrap - Luxury Candles &amp; Gifts</title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="1561.61">
-  <style type="text/css">
-    body {background-color: #fffaf4}
-    p.p2 {margin: 0.0px 0.0px 12.0px 0.0px; text-align: center; line-height: 14.0px; font: 12.0px Arial; color: #4d3d3d; -webkit-text-stroke: #4d3d3d}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 12.0px Arial; color: #4d3d3d; -webkit-text-stroke: #4d3d3d}
-    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 13.0px; font: 11.0px Times; color: #000000; -webkit-text-stroke: #000000; background-color: #ffffff}
-    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 13.0px; font: 11.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff}
-    p.p7 {margin: 0.0px 0.0px 12.0px 0.0px; line-height: 14.0px; font: 12.0px Arial; color: #4d3d3d; -webkit-text-stroke: #4d3d3d; min-height: 14.0px}
-    p.p8 {margin: 0.0px 0.0px 12.0px 0.0px; line-height: 14.0px; font: 12.0px Arial; color: #4d3d3d; -webkit-text-stroke: #4d3d3d}
-    p.p10 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; line-height: 28.0px; font: 24.0px '.Apple Color Emoji UI'; color: #ffffff; -webkit-text-stroke: #ffffff; background-color: #d67878}
-    p.p11 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; line-height: 14.0px; font: 12.0px Arial; color: #4d3d3d; -webkit-text-stroke: #4d3d3d; background-color: #f8d7da}
-    p.p12 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; line-height: 11.0px; font: 10.0px Arial; color: #0000ee; -webkit-text-stroke: #0000ee}
-    li.li3 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 12.0px Arial; color: #4d3d3d; -webkit-text-stroke: #4d3d3d}
-    span.s1 {font: 24.0px 'Apple Color Emoji'; font-kerning: none; background-color: #f8d7da}
-    span.s2 {font-kerning: none; background-color: #f8d7da}
-    span.s3 {font-kerning: none; background-color: #f2d2bd}
-    span.s4 {font-kerning: none}
-    span.s5 {font: 18.0px 'Apple Color Emoji'; font-kerning: none}
-    span.s6 {font: 11.0px 'Helvetica Neue'; font-kerning: none}
-    span.s7 {font-kerning: none; color: #000000; background-color: #ffffff; -webkit-text-stroke: 0px #000000}
-    span.s8 {font: 12.0px Arial; font-kerning: none; color: #4d3d3d; -webkit-text-stroke: 0px #4d3d3d}
-    span.s9 {font: 11.0px '.SF NS Text'; font-kerning: none; background-color: #d67878}
-    span.s10 {-webkit-text-stroke: 0px #000000}
-    span.s11 {font: 14.0px 'Apple Color Emoji'; font-kerning: none}
-    span.s12 {font: 10.0px 'Apple Color Emoji'; text-decoration: underline ; font-kerning: none; background-color: #f8d7da}
-    span.s13 {font: 10.0px Arial; text-decoration: underline ; font-kerning: none}
-    ul.ul1 {list-style-type: disc}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wax & Wrap - Luxury Candles & Gifts</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      background-color: #fffaf4;
+      color: #4d3d3d;
+    }
+    header, footer {
+      background-color: #f8d7da;
+      text-align: center;
+      padding: 1rem;
+    }
+    nav {
+      background: #f2d2bd;
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      padding: 1rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #4d3d3d;
+      font-weight: bold;
+    }
+    .section {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+    .product {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 1rem;
+    }
+    .product img {
+      width: 100px;
+      height: 100px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 6px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      background-color: #d67878;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .chat-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #d67878;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 24px;
+      z-index: 999;
+    }
+    .chat-window {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 320px;
+      background-color: #fff;
+      border: 2px solid #d67878;
+      border-radius: 12px;
+      display: none;
+      flex-direction: column;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 999;
+    }
+    .chat-header {
+      background-color: #d67878;
+      color: white;
+      padding: 10px;
+      font-weight: bold;
+      text-align: center;
+    }
+    #chatMessages {
+      max-height: 250px;
+      overflow-y: auto;
+      padding: 10px;
+      font-size: 14px;
+      background: #fffaf4;
+    }
+    #chatMessages p {
+      background: #fff;
+      margin: 5px 0;
+      padding: 8px 12px;
+      border-radius: 12px;
+      max-width: 85%;
+    }
+    .chat-footer {
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .admin-section {
+      display: none;
+      text-align: center;
+      background-color: #f2d2bd;
+      margin: 2rem;
+      padding: 2rem;
+      border-radius: 12px;
+    }
+    footer small {
+      display: block;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; line-height: 28.0px; font: 24.0px Arial; color: #4d3d3d; -webkit-text-stroke: #4d3d3d"><span class="s1">🕯️</span><span class="s2"><b> Wax &amp; Wrap</b></span></h1>
-<p class="p2"><span class="s2">Luxury Candles &amp; Custom Chocolates</span></p>
-<p class="p3"><span class="s3"><b>Home</b></span></p>
-<p class="p3"><span class="s3"><b>Products</b></span></p>
-<p class="p3"><span class="s3"><b>Order</b></span></p>
-<p class="p3"><span class="s3"><b>Chatbots</b></span></p>
-<p class="p3"><span class="s3"><a href="https://wa.me/971507066277"><b>WhatsApp</b><span class="s4"><b></b></span></a></span></p>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; line-height: 21.0px; font: 18.0px Arial; color: #4d3d3d; -webkit-text-stroke: #4d3d3d"><span class="s5">🛍️</span><span class="s4"><b> Our Products</b></span></h2>
-<p class="p3"><span class="s4"></span></p>
-<p class="p3"><span class="s4"><b>Soy Aroma Candle</b></span></p>
-<p class="p3"><span class="s4">AED 15 (Cost: AED 6, Profit: AED 9)</span></p>
-<p class="p3"><span class="s4"></span></p>
-<p class="p3"><span class="s4"><b>Custom Chocolate Wrapper</b></span></p>
-<p class="p3"><span class="s4">AED 3 (Cost: AED 1, Profit: AED 2)</span></p>
-<p class="p3"><span class="s4"></span></p>
-<p class="p3"><span class="s4"><b>Gift Set (Candle + 2 Chocolates)</b></span></p>
-<p class="p3"><span class="s4">AED 20 (Cost: AED 8, Profit: AED 12)</span></p>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; line-height: 21.0px; font: 18.0px Arial; color: #4d3d3d; -webkit-text-stroke: #4d3d3d"><span class="s5">📝</span><span class="s4"><b> Place Your Order</b></span></h2>
-<p class="p5"><span class="s6"><span class="Apple-converted-space">      </span></span><span class="s4">Select Product</span></p>
-<p class="p5"><span class="s6"><span class="Apple-converted-space">      </span></span><span class="s4">Soy Candle</span></p>
-<p class="p5"><span class="s6"><span class="Apple-converted-space">      </span></span><span class="s4">Chocolate Wrapper</span></p>
-<p class="p5"><span class="s6"><span class="Apple-converted-space">      </span></span><span class="s4">Gift Set</span></p>
-<p class="p6"><span class="s7"><span class="Apple-converted-space">    </span></span><span class="s8"> </span><span class="s9"><b>Submit Order</b></span><span class="s8"><span class="Apple-converted-space"> </span></span></p>
-<p class="p7"><span class="s4"></span><br></p>
-<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; line-height: 21.0px; font: 18.0px Arial; color: #4d3d3d; -webkit-text-stroke: #4d3d3d"><span class="s5">🤖</span><span class="s4"><b> Chatbot &amp; WhatsApp Automation</b></span></h2>
-<p class="p8"><span class="s4">Boost your business with our automation packages:</span></p>
-<ul class="ul1">
-  <li class="li3"><span class="s10"><b></b></span><span class="s4"><b>Starter – AED 199/month:</b> Website chatbot with 10 FAQs</span></li>
-  <li class="li3"><span class="s10"><b></b></span><span class="s4"><b>Pro WhatsApp – AED 349/month:</b> WhatsApp chatbot, order flow, 50 replies</span></li>
-  <li class="li3"><span class="s10"><b></b></span><span class="s4"><b>Business Plus – AED 499/month:</b> Web + WhatsApp, multilingual, analytics</span></li>
-  <li class="li3"><span class="s10"><b></b></span><span class="s4"><b>Agency Plan – AED 999/month:</b> For resellers managing 3 businesses</span></li>
-</ul>
-<h3 style="margin: 0.0px 0.0px 14.0px 0.0px; line-height: 16.0px; font: 14.0px Arial; color: #4d3d3d; -webkit-text-stroke: #4d3d3d"><span class="s11">📩</span><span class="s4"><b> Request Chatbot Services</b></span></h3>
-<p class="p5"><span class="s6"><span class="Apple-converted-space">      </span></span><span class="s4">Choose Plan</span></p>
-<p class="p5"><span class="s6"><span class="Apple-converted-space">      </span></span><span class="s4">Starter – AED 199</span></p>
-<p class="p5"><span class="s6"><span class="Apple-converted-space">      </span></span><span class="s4">Pro WhatsApp – AED 349</span></p>
-<p class="p5"><span class="s6"><span class="Apple-converted-space">      </span></span><span class="s4">Business Plus – AED 499</span></p>
-<p class="p5"><span class="s6"><span class="Apple-converted-space">      </span></span><span class="s4">Agency – AED 999</span></p>
-<p class="p6"><span class="s7"><span class="Apple-converted-space">    </span></span><span class="s8"> </span><span class="s9"><b>Submit Inquiry</b></span><span class="s8"><span class="Apple-converted-space"> </span></span></p>
-<p class="p7"><span class="s4"></span><br></p>
-<p class="p10"><span class="s4">💬</span></p>
-<p class="p11"><span class="s4">© 2025 Wax &amp; Wrap · Dubai</span></p>
-<p class="p12"><span class="s12"><a href="javascript:void(0)">🔐<span class="s13"> Access Admin Panel</span></a></span></p>
+
+<header>
+  <h1>🕯️ Wax & Wrap</h1>
+  <p>Luxury Candles & Custom Chocolates</p>
+</header>
+
+<nav>
+  <a href="#home">Home</a>
+  <a href="#products">Products</a>
+  <a href="#order">Order</a>
+  <a href="#chatbots">Chatbots</a>
+  <a href="https://wa.me/971507066277" target="_blank">WhatsApp</a>
+</nav>
+
+<section class="section" id="products">
+  <h2>🛍️ Our Products</h2>
+  <div class="product">
+    <img src="candle.jpg" alt="Soy Candle" />
+    <div><strong>Soy Aroma Candle</strong><br>AED 15 (Cost: AED 6, Profit: AED 9)</div>
+  </div>
+  <div class="product">
+    <img src="chocolate.jpg" alt="Custom Chocolate" />
+    <div><strong>Custom Chocolate Wrapper</strong><br>AED 3 (Cost: AED 1, Profit: AED 2)</div>
+  </div>
+  <div class="product">
+    <img src="giftset.jpg" alt="Gift Set" />
+    <div><strong>Gift Set (Candle + 2 Chocolates)</strong><br>AED 20 (Cost: AED 8, Profit: AED 12)</div>
+  </div>
+</section>
+
+<section class="section" id="order">
+  <h2>📝 Place Your Order</h2>
+  <form id="orderForm">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="text" name="phone" placeholder="Phone Number" required>
+    <input type="email" name="email" placeholder="Email (optional)">
+    <select name="product" required>
+      <option value="">Select Product</option>
+      <option value="Soy Candle">Soy Candle</option>
+      <option value="Chocolate Wrapper">Chocolate Wrapper</option>
+      <option value="Gift Set">Gift Set</option>
+    </select>
+    <input type="number" name="quantity" placeholder="Quantity" required>
+    <textarea name="message" placeholder="Custom message or notes"></textarea>
+    <button type="submit">Submit Order</button>
+  </form>
+  <p id="formStatus"></p>
+</section>
+
+<section class="section" id="chatbots">
+  <h2>🤖 Chatbot & WhatsApp Automation</h2>
+  <p>Boost your business with our automation packages:</p>
+  <ul>
+    <li><strong>Starter – AED 199/month:</strong> Website chatbot with 10 FAQs</li>
+    <li><strong>Pro WhatsApp – AED 349/month:</strong> WhatsApp chatbot, order flow, 50 replies</li>
+    <li><strong>Business Plus – AED 499/month:</strong> Web + WhatsApp, multilingual, analytics</li>
+    <li><strong>Agency Plan – AED 999/month:</strong> For resellers managing 3 businesses</li>
+  </ul>
+  <form id="chatbotForm">
+    <h3>📩 Request Chatbot Services</h3>
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="text" name="phone" placeholder="Phone Number" required>
+    <input type="email" name="email" placeholder="Email (optional)">
+    <select name="plan" required>
+      <option value="">Choose Plan</option>
+      <option value="Starter">Starter – AED 199</option>
+      <option value="Pro WhatsApp">Pro WhatsApp – AED 349</option>
+      <option value="Business Plus">Business Plus – AED 499</option>
+      <option value="Agency">Agency – AED 999</option>
+    </select>
+    <textarea name="message" placeholder="Business name or customization needs"></textarea>
+    <button type="submit">Submit Inquiry</button>
+  </form>
+  <p id="chatbotFormStatus"></p>
+</section>
+
+<section class="admin-section" id="admin">
+  <h2>🔐 Admin Panel</h2>
+  <input type="password" id="adminPass" placeholder="Enter admin password" />
+  <button onclick="checkAdmin()">Unlock</button>
+  <div id="adminDownload" style="display:none; margin-top: 20px;">
+    <h3>All Submissions</h3>
+    <table border="1" cellpadding="6" cellspacing="0" style="margin:auto; background:#fff;">
+      <thead>
+        <tr><th>Source</th><th>Name</th><th>Phone</th><th>Email/Product</th><th>Qty</th><th>Message</th></tr>
+      </thead>
+      <tbody id="leadTableBody"></tbody>
+    </table>
+    <br>
+    <button onclick="downloadAllLeads()">⬇️ Download Leads</button>
+  </div>
+</section>
+
+<!-- Chatbot -->
+<button class="chat-button" onclick="toggleChat()">💬</button>
+<div class="chat-window" id="chatWindow">
+  <div class="chat-header">🤖 GiftGenie</div>
+  <div id="chatMessages"></div>
+  <div class="chat-footer">
+    <input type="text" id="chatInput" placeholder="Type here..." />
+    <button onclick="nextChat()">Send</button>
+    <a href="https://wa.me/971507066277" target="_blank">
+      <button style="background-color:#25D366;">📱 WhatsApp Us</button>
+    </a>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 Wax & Wrap · Dubai
+  <small><a href="javascript:void(0)" onclick="checkAdmin()">🔐 Access Admin Panel</a></small>
+</footer>
+
+<script>
+  const allLeads = [];
+  let chatStep = 0;
+  let chatbotLead = { name: "", phone: "", email: "" };
+  let chatbotMode = "collect";
+  const faqs = {
+    "hi": "Hello! How can I help you today?",
+    "price": "Our soy candles are AED 15, chocolate wrappers AED 3, and gift sets AED 20.",
+    "delivery": "We deliver across the UAE in 2-3 days.",
+    "custom": "Yes, customization is available on all items.",
+    "whatsapp": "You can contact us via WhatsApp at 0507066277."
+  };
+
+  function toggleChat() {
+    const win = document.getElementById("chatWindow");
+    win.style.display = win.style.display === "flex" ? "none" : "flex";
+    if (chatStep === 0) {
+      document.getElementById("chatMessages").innerHTML =
+        `<p><strong>GiftGenie:</strong> Hi! What's your name?</p>`;
+    }
+  }
+
+  function nextChat() {
+    const input = document.getElementById("chatInput");
+    const val = input.value.trim();
+    const chatBox = document.getElementById("chatMessages");
+    if (!val) return;
+
+    chatBox.innerHTML += `<p style="background:#d67878;color:white;"><strong>You:</strong> ${val}</p>`;
+
+    if (chatbotMode === "collect") {
+      if (chatStep === 0) {
+        chatbotLead.name = val;
+        chatBox.innerHTML += `<p><strong>GiftGenie:</strong> What's your phone number?</p>`;
+      } else if (chatStep === 1) {
+        chatbotLead.phone = val;
+        chatBox.innerHTML += `<p><strong>GiftGenie:</strong> And your email?</p>`;
+      } else if (chatStep === 2) {
+        chatbotLead.email = val;
+        allLeads.push({
+          source: "Chatbot",
+          name: chatbotLead.name,
+          phone: chatbotLead.phone,
+          email: chatbotLead.email,
+          extra1: "-",
+          extra2: "-",
+          message: "-"
+        });
+        chatBox.innerHTML += `<p><strong>GiftGenie:</strong> Thank you! I'm here to answer any questions you have 😊</p>`;
+        chatbotLead = { name: "", phone: "", email: "" };
+        chatbotMode = "faq";
+        chatStep = -1;
+      }
+      chatStep++;
+    } else {
+      let found = false;
+      for (const key in faqs) {
+        if (val.toLowerCase().includes(key)) {
+          chatBox.innerHTML += `<p><strong>GiftGenie:</strong> ${faqs[key]}</p>`;
+          found = true;
+          break;
+        }
+      }
+      if (!found) {
+        chatBox.innerHTML += `<p><strong>GiftGenie:</strong> I'm not sure. Please WhatsApp us at 0507066277.</p>`;
+      }
+    }
+    input.value = "";
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }
+
+  function checkAdmin() {
+    const password = prompt("Enter Admin Password:");
+    if (password === "giftadmin123") {
+      const admin = document.getElementById("admin");
+      admin.style.display = "block";
+      const tableBody = document.getElementById("leadTableBody");
+      tableBody.innerHTML = "";
+      allLeads.forEach(l => {
+        const row = `<tr>
+          <td>${l.source}</td>
+          <td>${l.name}</td>
+          <td>${l.phone}</td>
+          <td>${l.email || l.extra1}</td>
+          <td>${l.extra2 || "-"}</td>
+          <td>${l.message || "-"}</td>
+        </tr>`;
+        tableBody.innerHTML += row;
+      });
+      document.getElementById("adminDownload").style.display = "block";
+    } else {
+      alert("Incorrect password!");
+    }
+  }
+
+  function downloadAllLeads() {
+    if (allLeads.length === 0) return alert("No leads yet.");
+    const headers = ["Source", "Name", "Phone", "Email/Product", "Qty", "Message"];
+    const rows = allLeads.map(l =>
+      [l.source, l.name, l.phone, l.email || l.extra1, l.extra2 || "-", l.message || "-"]
+        .map(v => `"${v}"`).join(",")
+    );
+    const csv = [headers.join(","), ...rows].join("\n");
+    const blob = new Blob([csv], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "leads.csv";
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  document.getElementById('orderForm')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = e.target;
+    allLeads.push({
+      source: "Form",
+      name: form.name.value,
+      phone: form.phone.value,
+      email: form.email.value || "-",
+      extra1: form.product.value,
+      extra2: form.quantity.value,
+      message: form.message.value || "-"
+    });
+    document.getElementById("formStatus").innerText = "✅ Order submitted!";
+    form.reset();
+  });
+
+  document.getElementById('chatbotForm')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = e.target;
+    allLeads.push({
+      source: "Chatbot Service",
+      name: form.name.value,
+      phone: form.phone.value,
+      email: form.email.value || "-",
+      extra1: form.plan.value,
+      extra2: "-",
+      message: form.message.value || "-"
+    });
+    document.getElementById("chatbotFormStatus").innerText = "✅ Inquiry submitted!";
+    form.reset();
+  });
+</script>
 </body>
 </html>
