@@ -1,601 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>WrapBOT – Smart Solutions  Smart Business. Thoughtful Gifts. All in One Wrap</title>
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      background-color: #fffaf4;
-      color: #4d3d3d;
-      position: relative;
-      z-index: 0;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: url('https://images.pexels.com/photos/5303025/pexels-photo-5303025.jpeg?auto=compress&cs=tinysrgb&h=650&w=940') center center/cover no-repeat;
-      opacity: 0.50;
-      filter: blur(6px);
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    header, footer {
-      background-color: #f8d7da;
-      text-align: center;
-      padding: 1rem;
-    }
-    nav {
-      background: #f2d2bd;
-      display: flex;
-      justify-content: center;
-      gap: 1.2rem;
-      padding: 1rem;
-    }
-    nav a {
-      text-decoration: none;
-      color: #4d3d3d;
-      font-weight: bold;
-    }
-    .section {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 1rem;
-    }
-    .product {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 20px;
-      margin-bottom: 1.5rem;
-    }
-    .product img {
-      width: 100px;
-      height: 100px;
-      flex-shrink: 0;
-      border-radius: 10px;
-      object-fit: cover;
-    }
-    input, select, textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 6px 0;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-    button {
-      background-color: #d67878;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 6px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .chat-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #d67878;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      font-size: 24px;
-      z-index: 999;
-    }
-    .chat-window {
-      position: fixed;
-      bottom: 90px;
-      right: 20px;
-      width: 320px;
-      background-color: #fff;
-      border: 2px solid #d67878;
-      border-radius: 12px;
-      display: none;
-      flex-direction: column;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      z-index: 999;
-    }
-    .chat-header {
-      background-color: #d67878;
-      color: white;
-      padding: 10px;
-      font-weight: bold;
-      text-align: center;
-    }
-    #chatMessages {
-      max-height: 250px;
-      overflow-y: auto;
-      padding: 10px;
-      font-size: 14px;
-      background: #fffaf4;
-    }
-    #chatMessages p {
-      background: #fff;
-      margin: 5px 0;
-      padding: 8px 12px;
-      border-radius: 12px;
-      max-width: 85%;
-    }
-    .chat-footer {
-      padding: 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-    .admin-section {
-      display: none;
-      text-align: center;
-      background-color: #f2d2bd;
-      margin: 2rem;
-      padding: 2rem;
-      border-radius: 12px;
-    }
-    footer small {
-      display: block;
-      margin-top: 10px;
-    }
-    @media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .section {
-    padding: 1rem;
-    margin: 1rem auto;
-  }
-
-  .product {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .product img {
-    width: 100%;
-    height: auto;
-  }
-
-  input, select, textarea, button {
-    font-size: 16px;
-  }
-
-  .chat-window {
-    width: 90%;
-    right: 5%;
-  }
-
-  .chat-button {
-    width: 50px;
-    height: 50px;
-    font-size: 20px;
-  }
-
-  .admin-section {
-    margin: 1rem;
-    padding: 1rem;
-  }
-
-  footer {
-    font-size: 14px;
-    padding: 1rem 0.5rem;
-  }
-      }
-.product-grid {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  text-align: center;
-  padding: 1rem;
-}
-
-.product-card {
-  flex: 1 1 200px;
-  max-width: 240px;
-  padding: 1rem;
-  background: #fff;
-  border-radius: 12px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-.product-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-.product-card img {
-  width: 100%;
-  max-width: 200px;
-  height: auto;
-  aspect-ratio: 1/1;
-  object-fit: cover;
-  border-radius: 12px;
-  display: block;
-  margin: 0 auto 10px;
-}
-
-figcaption {
-  margin: 10px 0;
-  font-size: 1rem;
-  color: #4d3d3d;
-  font-weight: bold;
-}
-
-.cart-btn, .whatsapp-btn {
-  margin-top: 10px;
-  padding: 8px 14px;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  width: 100%;
-}
-
-.cart-btn {
-  background-color: #f2d2bd;
-  color: #4d3d3d;
-}
-
-.whatsapp-btn {
-  background-color: #25D366;
-  color: white;
-  margin-top: 5px;
-}
-
-@media (max-width: 768px) {
-  .product-grid {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .product-card {
-    max-width: 90%;
-  }
-
-  .product-card img {
-    max-width: 100%;
-  }
-}
-
-    
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>WrapBOT – Smart Solutions  Smart Business. Thoughtful Gifts. All in One Wrap</title>
+<style>body{font-family:'Arial',sans-serif;margin:0;background-color:#fffaf4;color:#4d3d3d;position:relative;z-index:0}body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background:url('https://images.pexels.com/photos/5303025/pexels-photo-5303025.jpeg?auto=compress&cs=tinysrgb&h=650&w=940')center center/cover no-repeat;opacity:.5;filter:blur(6px);z-index:-1;pointer-events:none}header,footer{background-color:#f8d7da;text-align:center;padding:1rem}nav{background:#f2d2bd;display:flex;justify-content:center;gap:1.2rem;padding:1rem}nav a{text-decoration:none;color:#4d3d3d;font-weight:bold}.section{max-width:900px;margin:2rem auto;padding:1rem}.product{display:flex;flex-wrap:wrap;align-items:center;gap:20px;margin-bottom:1.5rem}.product img{width:100px;height:100px;flex-shrink:0;border-radius:10px;object-fit:cover}input,select,textarea{width:100%;padding:10px;margin:6px 0;border:1px solid #ccc;border-radius:6px}button{background-color:#d67878;color:#fff;padding:10px 20px;border:none;border-radius:6px;font-weight:bold;cursor:pointer}.chat-button{position:fixed;bottom:20px;right:20px;background-color:#d67878;color:#fff;border:none;border-radius:50%;width:60px;height:60px;font-size:24px;z-index:999}.chat-window{position:fixed;bottom:90px;right:20px;width:320px;background-color:#fff;border:2px solid #d67878;border-radius:12px;display:none;flex-direction:column;box-shadow:0 4px 10px rgba(0,0,0,.2);z-index:999}.chat-header{background-color:#d67878;color:#fff;padding:10px;font-weight:bold;text-align:center}#chatMessages{max-height:250px;overflow-y:auto;padding:10px;font-size:14px;background:#fffaf4}#chatMessages p{background:#fff;margin:5px 0;padding:8px 12px;border-radius:12px;max-width:85%}.chat-footer{padding:10px;display:flex;flex-direction:column;gap:5px}.admin-section{display:none;text-align:center;background-color:#f2d2bd;margin:2rem;padding:2rem;border-radius:12px}footer small{display:block;margin-top:10px}@media (max-width:768px){nav{flex-direction:column;gap:10px}.section{padding:1rem;margin:1rem auto}.product{flex-direction:column;align-items:flex-start}.product img{width:100%;height:auto}input,select,textarea,button{font-size:16px}.chat-window{width:90%;right:5%}.chat-button{width:50px;height:50px;font-size:20px}.admin-section{margin:1rem;padding:1rem}footer{font-size:14px;padding:1rem .5rem}}.product-grid{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;text-align:center;padding:1rem}.product-card{flex:1 1 200px;max-width:240px;padding:1rem;background:#fff;border-radius:12px;transition:transform .3s ease,box-shadow .3s ease;box-shadow:0 2px 6px rgba(0,0,0,.1)}.product-card:hover{transform:scale(1.03);box-shadow:0 4px 12px rgba(0,0,0,.2)}.product-card img{width:100%;max-width:200px;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:12px;display:block;margin:0 auto 10px}figcaption{margin:10px 0;font-size:1rem;color:#4d3d3d;font-weight:bold}.cart-btn,.whatsapp-btn{margin-top:10px;padding:8px 14px;border:none;border-radius:8px;font-weight:bold;cursor:pointer;width:100%}.cart-btn{background-color:#f2d2bd;color:#4d3d3d}.whatsapp-btn{background-color:#25D366;color:#fff;margin-top:5px}@media (max-width:768px){.product-grid{flex-direction:column;align-items:center}.product-card{max-width:90%}.product-card img{max-width:100%}}</style>
 </head>
 <body>
-
 <header>
-  <h1> WrapBOT – Smart Solutions </h1>
-  <p>Smart Business. Thoughtful Gifts. All in One Wrap.</p>
+<h1>WrapBOT – Smart Solutions</h1>
+<p>Smart Business. Thoughtful Gifts. All in One Wrap.</p>
 </header>
-  <section style="background: linear-gradient(to bottom, #fffaf4cc, #fffaf4cc), url('https://images.pexels.com/photos/5303025/pexels-photo-5303025.jpeg?auto=compress&cs=tinysrgb&h=750&q=80') center/cover no-repeat; padding: 4rem 2rem; text-align: center;">
-    <h1 style="font-size: 2.5rem; color: #4d3d3d; margin-bottom: 1rem;">WrapBOT</h1>
-    <h2 style="font-weight: normal; color: #4d3d3d; max-width: 800px; margin: 0 auto;">
-      Your one-stop destination for <strong>WhatsApp automation</strong>, <strong>business marketing tools</strong>, and <strong>personalized gifting</strong>.
-    </h2>
-    <p style="margin-top: 1rem; color: #4d3d3d; max-width: 700px; margin-left: auto; margin-right: auto;">
-      We help small to medium business owners streamline customer engagement with smart bots, websites, and branded content — while also offering custom gifts for events, weddings, and last-minute surprises.  
-      Whether you're scaling your brand or sending a soy candle to someone special — <strong>WrapBOT wraps it all for you</strong>.
-    </p>
-  </section>
-
+<section style="background:linear-gradient(to bottom,#fffaf4cc,#fffaf4cc),url('https://images.pexels.com/photos/5303025/pexels-photo-5303025.jpeg?auto=compress&cs=tinysrgb&h=750&q=80')center/cover no-repeat;padding:4rem 2rem;text-align:center;">
+<h1 style="font-size:2.5rem;color:#4d3d3d;margin-bottom:1rem;">WrapBOT</h1>
+<h2 style="font-weight:normal;color:#4d3d3d;max-width:800px;margin:0 auto;">Your one-stop destination for <strong>WhatsApp automation</strong>, <strong>business marketing tools</strong>, and <strong>personalized gifting</strong>.</h2>
+<p style="margin-top:1rem;color:#4d3d3d;max-width:700px;margin-left:auto;margin-right:auto;">We help small to medium business owners streamline customer engagement with smart bots, websites, and branded content — while also offering custom gifts for events, weddings, and last-minute surprises. Whether you're scaling your brand or sending a soy candle to someone special — <strong>WrapBOT wraps it all for you</strong>.</p>
+</section>
 <nav>
-  <a href="#home">Home</a>
-  <a href="#products">Products</a>
-  <a href="#order">Order</a>
-  <a href="#chatbots">Chatbots</a>
-  <a href="https://wa.me/971507066277" target="_blank">WhatsApp</a>
+<a href="#home">Home</a>
+<a href="#products">Products</a>
+<a href="#order">Order</a>
+<a href="#chatbots">Chatbots</a>
+<a href="https://wa.me/971507066277" target="_blank">WhatsApp</a>
 </nav>
-  <div style="text-align:center; margin: 2rem;">
-  <a href="https://calendly.com/YOUR-LINK" target="_blank">
-    <button style="background:#4d3d3d; color:white; padding:12px 24px; border:none; border-radius:8px;">📞 Book a Free Call</button>
-  </a>
-  </div>
-  <section class="section" id="products">
-    <h2>🛍️ Our Products</h2>
-    <p><em>Note: Prices not displayed online. All items are customized upon request.</em></p>
-
-    <div class="product-grid">
-      <div class="product-card">
-        <img src="https://images.pexels.com/photos/8467379/pexels-photo-8467379.jpeg" alt="Soy Aroma Candle" />
-        <figcaption>Soy Aroma Candle</figcaption>
-           <button onclick="addToCart('Soy Aroma Candle')">🛒 Add to Cart</button>
-        <a href="https://wa.me/971507066277?text=I%20want%20to%20order%20Soy%20Aroma%20Candle" target="_blank">
-          <button class="whatsapp-btn">📲 Order on WhatsApp</button>
-        </a>
-      </div>
-
-      <div class="product-card">
-        <img src="https://images.pexels.com/photos/6765964/pexels-photo-6765964.jpeg"
-             alt="Custom Chocolate Box with flowers and candies" />
-        <figcaption>
-          Custom Chocolate
-          <br>
-          <small>
-            Photo by 
-            <a href="https://www.pexels.com/photo/crop-woman-with-box-of-flowers-and-candies-6765964"
-               target="_blank" rel="noopener noreferrer">
-              Michelle Leman
-            </a> on Pexels
-          </small>
-        </figcaption>
-        <button onclick="addToCart('Custom Chocolate')">🛒 Add to Cart</button>
-        <a href="https://wa.me/971507066277?text=I%20want%20to%20order%20Custom%20Chocolate%20Wrapper" target="_blank">
-          <button class="whatsapp-btn">📲 Order on WhatsApp</button>
-        </a>
-      </div>
-
-
-      <div class="product-card">
-        <img src="giftset.jpg" alt="Gift Set" />
-        <figcaption>Gift Set, Candle + 2 Chocolates</figcaption>
-         <button onclick="addToCart('
-                                    Gift Set (Candle + 2 Chocolates)')">🛒 Add to Cart</button>
-        <a href="https://wa.me/971507066277?text=I%20want%20to%20order%20Gift%20Set" target="_blank">
-          <button class="whatsapp-btn">📲 Order on WhatsApp</button>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  
-
-
+<div style="text-align:center;margin:2rem;">
+<a href="https://calendly.com/YOUR-LINK" target="_blank"><button style="background:#4d3d3d;color:white;padding:12px 24px;border:none;border-radius:8px;">📞 Book a Free Call</button></a>
+</div>
+<section class="section" id="products">
+<h2>🛍️ Our Products</h2>
+<p><em>Note: Prices not displayed online. All items are customized upon request.</em></p>
+<div class="product-grid">
+<div class="product-card">
+<img src="https://images.pexels.com/photos/8467379/pexels-photo-8467379.jpeg" alt="Soy Aroma Candle"/>
+<figcaption>Soy Aroma Candle</figcaption>
+<button onclick="addToCart('Soy Aroma Candle')">🛒 Add to Cart</button>
+<a href="https://wa.me/971507066277?text=I%20want%20to%20order%20Soy%20Aroma%20Candle" target="_blank">
+<button class="whatsapp-btn">📲 Order on WhatsApp</button>
+</a>
+</div>
+<div class="product-card">
+<img src="https://images.pexels.com/photos/6765964/pexels-photo-6765964.jpeg" alt="Custom Chocolate Box with flowers and candies"/>
+<figcaption>
+Custom Chocolate<br>
+<small>Photo by <a href="https://www.pexels.com/photo/crop-woman-with-box-of-flowers-and-candies-6765964" target="_blank" rel="noopener noreferrer">Michelle Leman</a> on Pexels</small>
+</figcaption>
+<button onclick="addToCart('Custom Chocolate')">🛒 Add to Cart</button>
+<a href="https://wa.me/971507066277?text=I%20want%20to%20order%20Custom%20Chocolate%20Wrapper" target="_blank">
+<button class="whatsapp-btn">📲 Order on WhatsApp</button>
+</a>
+</div>
+<div class="product-card">
+<img src="giftset.jpg" alt="Gift Set"/>
+<figcaption>Gift Set, Candle + 2 Chocolates</figcaption>
+<button onclick="addToCart('Gift Set (Candle + 2 Chocolates)')">🛒 Add to Cart</button>
+<a href="https://wa.me/971507066277?text=I%20want%20to%20order%20Gift%20Set" target="_blank">
+<button class="whatsapp-btn">📲 Order on WhatsApp</button>
+</a>
+</div>
+</div>
+</section>
 <section class="section" id="chatbots">
-  <h2>🤖 Chatbot & WhatsApp Automation</h2>
-  <p>Boost your business with our automation packages:</p>
-  <ul>
-    <li><strong>Starter –Finalized after Request </strong> Website chatbot with 10 FAQs</li>
-    <li><strong>Pro WhatApp: 
-      Finalized after Request
-    </strong> WhatsApp chatbot, order flow, 50 replies</li>
-    <li><strong>Business Plus –
-      Finalized after Request:</strong> Web + WhatsApp, multilingual, analytics</li>
-    <li><strong>Agency Plan –Finalized after Request :</strong> For resellers managing 3 businesses</li>
-  </ul>
-  <form id="chatbotForm">
-    <h3>📩 Request Chatbot Services</h3>
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="text" name="phone" placeholder="Phone Number" required>
-    <input type="email" name="email" placeholder="Email (optional)">
-    <select name="plan" required>
-      <option value="">Choose Plan</option>
-      <option value="Starter">Starter – </option>
-      <option value="Pro WhatsApp">Pro WhatsApp </option>
-      <option value="Business Plus">Business Plus </option>
-      <option value="Agency">Agency</option>
-    </select>
-    <textarea name="message" placeholder="Business name or customization needs"></textarea>
-    <button type="submit">Submit Inquiry</button>
-  </form>
-  <p id="chatbotFormStatus"></p>
+<h2>🤖 Chatbot & WhatsApp Automation</h2>
+<p>Boost your business with our automation packages:</p>
+<ul>
+<li><strong>Starter –Finalized after Request </strong> Website chatbot with 10 FAQs</li>
+<li><strong>Pro WhatApp: Finalized after Request</strong> WhatsApp chatbot, order flow, 50 replies</li>
+<li><strong>Business Plus –Finalized after Request:</strong> Web + WhatsApp, multilingual, analytics</li>
+<li><strong>Agency Plan –Finalized after Request :</strong> For resellers managing 3 businesses</li>
+</ul>
+<form id="chatbotForm">
+<h3>📩 Request Chatbot Services</h3>
+<input type="text" name="name" placeholder="Your Name" required>
+<input type="text" name="phone" placeholder="Phone Number" required>
+<input type="email" name="email" placeholder="Email (optional)">
+<select name="plan" required>
+<option value="">Choose Plan</option>
+<option value="Starter">Starter – </option>
+<option value="Pro WhatsApp">Pro WhatsApp </option>
+<option value="Business Plus">Business Plus </option>
+<option value="Agency">Agency</option>
+</select>
+<textarea name="message" placeholder="Business name or customization needs"></textarea>
+<button type="submit">Submit Inquiry</button>
+</form>
+<p id="chatbotFormStatus"></p>
 </section>
-
 <section class="admin-section" id="admin">
-  <h2>🔐 Admin Panel</h2>
-  <input type="password" id="adminPass" placeholder="Enter admin password" />
-  <button onclick="checkAdmin()">Unlock</button>
-  <div id="adminDownload" style="display:none; margin-top: 20px;">
-    <h3>All Submissions</h3>
-    <table border="1" cellpadding="6" cellspacing="0" style="margin:auto; background:#fff;">
-      <thead>
-        <tr><th>Source</th><th>Name</th><th>Phone</th><th>Email/Product</th><th>Qty</th><th>Message</th></tr>
-      </thead>
-      <tbody id="leadTableBody"></tbody>
-    </table>
-    <br>
-    <button onclick="downloadAllLeads()">⬇️ Download Leads</button>
-  </div>
+<h2>🔐 Admin Panel</h2>
+<input type="password" id="adminPass" placeholder="Enter admin password"/>
+<button onclick="checkAdmin()">Unlock</button>
+<div id="adminDownload" style="display:none;margin-top:20px;">
+<h3>All Submissions</h3>
+<table border="1" cellpadding="6" cellspacing="0" style="margin:auto;background:#fff;">
+<thead>
+<tr><th>Source</th><th>Name</th><th>Phone</th><th>Email/Product</th><th>Qty</th><th>Message</th></tr>
+</thead>
+<tbody id="leadTableBody"></tbody>
+</table>
+<br>
+<button onclick="downloadAllLeads()">⬇️ Download Leads</button>
+</div>
 </section>
-
-<!-- Chatbot -->
 <button class="chat-button" onclick="toggleChat()">💬</button>
 <div class="chat-window" id="chatWindow">
-  <div class="chat-header">🤖 GiftGenie</div>
-  <div id="chatMessages"></div>
-  <div class="chat-footer">
-    <input type="text" id="chatInput" placeholder="Type here..." />
-    <button onclick="nextChat()">Send</button>
-    <a href="https://wa.me/971507066277" target="_blank">
-      <button style="background-color:#25D366;">📱 WhatsApp Us</button>
-    </a>
-  </div>
+<div class="chat-header">🤖 GiftGenie</div>
+<div id="chatMessages"></div>
+<div class="chat-footer">
+<input type="text" id="chatInput" placeholder="Type here..."/>
+<button onclick="nextChat()">Send</button>
+<a href="https://wa.me/971507066277" target="_blank">
+<button style="background-color:#25D366;">📱 WhatsApp Us</button>
+</a>
 </div>
+</div>
+<footer>
+&copy; 2025 WrapBOT · Dubai
+<small><a href="javascript:void(0)" onclick="checkAdmin()">🔐 Access Admin Panel</a></small>
+<p style="font-size:12px;color:gray;margin-top:10px;">This website is for showcasing custom gift concepts only. We do not process payments or display prices on this site. All consultations and customizations are shared via WhatsApp or phone for personal coordination.</p>
+</footer>
+<script>const allLeads=[];let chatStep=0;let chatbotLead={name:"",phone:"",email:""};let chatbotMode="collect";const faqs={hi:"Hello! How can I help you today?",price:"We do not display prices online. Please WhatsApp us for a personalized quote.",delivery:"We deliver across the UAE in 2-3 days.",custom:"Yes, customization is available on all items.",whatsapp:"You can contact us via WhatsApp at 0507066277."};function toggleChat(){const win=document.getElementById("chatWindow");win.style.display=win.style.display==="flex"?"none":"flex";if(chatStep===0){document.getElementById("chatMessages").innerHTML=`<p><strong>GiftGenie:</strong> Hi! What's your name?</p>`}}function nextChat(){const input=document.getElementById("chatInput");const val=input.value.trim();const chatBox=document.getElementById("chatMessages");if(!val)return;chatBox.innerHTML+=`<p style="background:#d67878;color:white;"><strong>You:</strong> ${val}</p>`;if(chatbotMode==="collect"){if(chatStep===0){chatbotLead.name=val;chatBox.innerHTML+=`<p><strong>GiftGenie:</strong> What's your phone number?</p>`}else if(chatStep===1){chatbotLead.phone=val;chatBox.innerHTML+=`<p><strong>GiftGenie:</strong> And your email?</p>`}else if(chatStep===2){chatbotLead.email=val;allLeads.push({source:"Chatbot",name:chatbotLead.name,phone:chatbotLead.phone,email:chatbotLead.email,extra1:"-",extra2:"-",message:"-"});chatBox.innerHTML+=`<p><strong>GiftGenie:</strong> Thank you! I'm here to answer any questions you have 😊</p>`;chatbotLead={name:"",phone:"",email:""};chatbotMode="faq";chatStep=-1}chatStep++}else{let found=false;for(const key in faqs){if(val.toLowerCase().includes(key)){chatBox.innerHTML+=`<p><strong>GiftGenie:</strong> ${faqs[key]}</p>`;found=true;break}}if(!found){chatBox.innerHTML+=`<p><strong>GiftGenie:</strong> I'm not sure. Please WhatsApp us at 0507066277.</p>`}}input.value="";chatBox.scrollTop=chatBox.scrollHeight}function checkAdmin(){const password=prompt("Enter Admin Password:");if(password==="giftadmin123"){const admin=document.getElementById("admin");admin.style.display="block";const tableBody=document.getElementById("leadTableBody");tableBody.innerHTML="";allLeads.forEach(l=>{const row=`<tr><td>${l.source}</td><td>${l.name}</td><td>${l.phone}</td><td>${l.email||l.extra1}</td><td>${l.extra2||"-"}</td><td>${l.message||"-"}</td></tr>`;tableBody.innerHTML+=row});document.getElementById("adminDownload").style.display="block"}else{alert("Incorrect password!")}}const cart=[];function addToCart(productName){const existing=cart.find(item=>item.name===productName);if(existing){existing.qty+=1}else{cart.push({name:productName,qty:1})}updateCartUI()}function updateCartUI(){const list=document.getElementById("cart-items");const total=document.getElementById("total-qty");list.innerHTML="";let totalQty=0;cart.forEach(item=>{const li=document.createElement("li");li.innerText=`${item.qty} x ${item.name}`;list.appendChild(li);totalQty+=item.qty});total.innerText=totalQty}function toggleCart(){const cartBox=document.getElementById("cart-section");cartBox.style.display=cartBox.style.display==="block"?"none":"block"}
 
-  <footer>
-    &copy; 2025 WrapBOT · Dubai
-    <small><a href="javascript:void(0)" onclick="checkAdmin()">🔐 Access Admin Panel</a></small>
-    <p style="font-size: 12px; color: gray; margin-top: 10px;">
-      This website is for showcasing custom gift concepts only. We do not process payments or display prices on this site. All consultations and customizations are shared via WhatsApp or phone for personal coordination.
-    </p>
-  </footer>
-
-<script>
-  const allLeads = [];
-  let chatStep = 0;
-  let chatbotLead = { name: "", phone: "", email: "" };
-  let chatbotMode = "collect";
-  const faqs = {
-    "hi": "Hello! How can I help you today?",
-    "price": "We do not display prices online. Please WhatsApp us for a personalized quote.",
-    "delivery": "We deliver across the UAE in 2-3 days.",
-    "custom": "Yes, customization is available on all items.",
-    "whatsapp": "You can contact us via WhatsApp at 0507066277."
-  };
-
-  function toggleChat() {
-    const win = document.getElementById("chatWindow");
-    win.style.display = win.style.display === "flex" ? "none" : "flex";
-    if (chatStep === 0) {
-      document.getElementById("chatMessages").innerHTML =
-        `<p><strong>GiftGenie:</strong> Hi! What's your name?</p>`;
-    }
-  }
-
-  function nextChat() {
-    const input = document.getElementById("chatInput");
-    const val = input.value.trim();
-    const chatBox = document.getElementById("chatMessages");
-    if (!val) return;
-
-    chatBox.innerHTML += `<p style="background:#d67878;color:white;"><strong>You:</strong> ${val}</p>`;
-
-    if (chatbotMode === "collect") {
-      if (chatStep === 0) {
-        chatbotLead.name = val;
-        chatBox.innerHTML += `<p><strong>GiftGenie:</strong> What's your phone number?</p>`;
-      } else if (chatStep === 1) {
-        chatbotLead.phone = val;
-        chatBox.innerHTML += `<p><strong>GiftGenie:</strong> And your email?</p>`;
-      } else if (chatStep === 2) {
-        chatbotLead.email = val;
-        allLeads.push({
-          source: "Chatbot",
-          name: chatbotLead.name,
-          phone: chatbotLead.phone,
-          email: chatbotLead.email,
-          extra1: "-",
-          extra2: "-",
-          message: "-"
-        });
-        chatBox.innerHTML += `<p><strong>GiftGenie:</strong> Thank you! I'm here to answer any questions you have 😊</p>`;
-        chatbotLead = { name: "", phone: "", email: "" };
-        chatbotMode = "faq";
-        chatStep = -1;
-      }
-      chatStep++;
-    } else {
-      let found = false;
-      for (const key in faqs) {
-        if (val.toLowerCase().includes(key)) {
-          chatBox.innerHTML += `<p><strong>GiftGenie:</strong> ${faqs[key]}</p>`;
-          found = true;
-          break;
-        }
-      }
-      if (!found) {
-        chatBox.innerHTML += `<p><strong>GiftGenie:</strong> I'm not sure. Please WhatsApp us at 0507066277.</p>`;
-      }
-    }
-    input.value = "";
-    chatBox.scrollTop = chatBox.scrollHeight;
-  }
-
-  function checkAdmin() {
-    const password = prompt("Enter Admin Password:");
-    if (password === "giftadmin123") {
-      const admin = document.getElementById("admin");
-      admin.style.display = "block";
-      const tableBody = document.getElementById("leadTableBody");
-      tableBody.innerHTML = "";
-      allLeads.forEach(l => {
-        const row = `<tr>
-          <td>${l.source}</td>
-          <td>${l.name}</td>
-          <td>${l.phone}</td>
-          <td>${l.email || l.extra1}</td>
-          <td>${l.extra2 || "-"}</td>
-          <td>${l.message || "-"}</td>
-        </tr>`;
-        tableBody.innerHTML += row;
-      });
-      document.getElementById("adminDownload").style.display = "block";
-    } else {
-      alert("Incorrect password!");
-    }
-  }
-  const cart = [];
-
-function addToCart(productName) {
-  const existing = cart.find(item => item.name === productName);
-  if (existing) {
-    existing.qty += 1;
-  } else {
-    cart.push({ name: productName, qty: 1 });
-  }
-  updateCartUI();
-}
-
-function updateCartUI() {
-  const list = document.getElementById("cart-items");
-  const total = document.getElementById("total-qty");
-  list.innerHTML = "";
-  let totalQty = 0;
-  cart.forEach(item => {
-    const li = document.createElement("li");
-    li.innerText = `${item.qty} x ${item.name}`;
-    list.appendChild(li);
-    totalQty += item.qty;
-  });
-  total.innerText = totalQty;
-}
-
-function toggleCart() {
-  const cartBox = document.getElementById("cart-section");
-  cartBox.style.display = cartBox.style.display === "block" ? "none" : "block";
-}
-
-function submitCartToGoogle() {
-  if (cart.length === 0) {
+// --- FIXED submitCartToGoogle function below ---
+function submitCartToGoogle(){
+  if(cart.length===0){
     alert("🛒 Your cart is empty.");
     return;
   }
-
-  const name = prompt("Your Name:");
-  const phone = prompt("Your Phone Number:");
-  if (!name || !phone) return alert("Name and phone are required.");
-
-  const notes = document.getElementById("cart-notes").value;
-  const cartItems = cart.map(i => `${i.qty} x ${i.name}`).join("\n");
-  const totalQty = cart.reduce((sum, i) => sum + i.qty, 0);
-
-  const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSe3scFK0zTv9CO40aUSJhvWl-tVFMiTiZYHvcfhI-CqY7arUg/formResponse";
-
-  const data = new URLSearchParams({
-    "entry.1535606793": name,
-    "entry.180110936": phone,
-    "entry.1320373389": cartItems,
-    "entry.789805895": totalQty,
-    "entry.409017033": notes
+  const name=prompt("Your Name:");
+  const phone=prompt("Your Phone Number:");
+  if(!name||!phone) return alert("Name and phone are required.");
+  const notes=document.getElementById("cart-notes").value;
+  const cartItems=cart.map(i=>`${i.qty} x ${i.name}`).join("\n");
+  const totalQty=cart.reduce((sum,i)=>sum+i.qty,0);
+  const formURL="https://docs.google.com/forms/d/e/1FAIpQLSe3scFK0zTv9CO40aUSJhvWl-tVFMiTiZYHvcfhI-CqY7arUg/formResponse";
+  const params=new URLSearchParams({
+    "entry.1535606793":name,
+    "entry.180110936":phone,
+    "entry.1320373389":cartItems,
+    "entry.789805895":totalQty,
+    "entry.409017033":notes
   });
-
-  fetch(formURL, {
-    method: "POST",
-    mode: "no-cors",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded"
-    },
-    body: data.toString()
-  }).then(() => {
-    alert("✅ Order submitted!");
-    cart.length = 0;
-    updateCartUI();
-    document.getElementById("cart-notes").value = "";
-    toggleCart();
-  });
-  }
-
-  
+  window.open(formURL + "?" + params.toString(), "_blank");
+  cart.length=0;
+  updateCartUI();
+  document.getElementById("cart-notes").value="";
+  toggleCart();
+}
+// --- END FIXED submitCartToGoogle function ---
 
 </script>
-
-  <!-- 🛍️ Cart Box -->
-  <div id="cart-section" style="position:fixed;bottom:90px;right:20px;background:#fff;padding:1rem;border-radius:12px;box-shadow:0 0 10px rgba(0,0,0,0.2);display:none;z-index:999;">
-    <h3>Your Cart</h3>
-    <ul id="cart-items"></ul>
-    <p><strong>Total:</strong> <span id="total-qty">0</span> item(s)</p>
-    <textarea id="cart-notes" placeholder="Any notes or special instructions" style="width:100%;margin-top:5px;"></textarea>
-    <button onclick="submitCartToGoogle()">📝 Submit</button>
-  </div>
-
-  <!-- 🛒 Floating Button -->
-  <button onclick="toggleCart()" style="position:fixed;bottom:20px;right:20px;width:60px;height:60px;border-radius:50%;background:#f2d2bd;border:none;font-size:24px;z-index:998;">🛒</button>
+<div id="cart-section" style="position:fixed;bottom:90px;right:20px;background:#fff;padding:1rem;border-radius:12px;box-shadow:0 0 10px rgba(0,0,0,0.2);display:none;z-index:999;">
+<h3>Your Cart</h3>
+<ul id="cart-items"></ul>
+<p><strong>Total:</strong> <span id="total-qty">0</span> item(s)</p>
+<textarea id="cart-notes" placeholder="Any notes or special instructions" style="width:100%;margin-top:5px;"></textarea>
+<button onclick="submitCartToGoogle()">📝 Submit</button>
+</div>
+<!-- CART BUTTON MOVED TO LEFT SIDE SO IT DOESN'T OVERLAP CHAT BUTTON -->
+<button onclick="toggleCart()" style="position:fixed;bottom:20px;left:20px;width:60px;height:60px;border-radius:50%;background:#f2d2bd;border:none;font-size:24px;z-index:998;">🛒</button>
 </body>
 </html>
