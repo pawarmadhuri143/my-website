@@ -4,7 +4,83 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>WrapBOT – Smart Solutions  Smart Business. Thoughtful Gifts. All in One Wrap</title>
-<style>body{font-family:'Arial',sans-serif;margin:0;background-color:#fffaf4;color:#4d3d3d;position:relative;z-index:0}body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background:url('https://images.pexels.com/photos/5303025/pexels-photo-5303025.jpeg?auto=compress&cs=tinysrgb&h=650&w=940')center center/cover no-repeat;opacity:.5;filter:blur(6px);z-index:-1;pointer-events:none}header,footer{background-color:#f8d7da;text-align:center;padding:1rem}nav{background:#f2d2bd;display:flex;justify-content:center;gap:1.2rem;padding:1rem}nav a{text-decoration:none;color:#4d3d3d;font-weight:bold}.section{max-width:900px;margin:2rem auto;padding:1rem}.product{display:flex;flex-wrap:wrap;align-items:center;gap:20px;margin-bottom:1.5rem}.product img{width:100px;height:100px;flex-shrink:0;border-radius:10px;object-fit:cover}input,select,textarea{width:100%;padding:10px;margin:6px 0;border:1px solid #ccc;border-radius:6px}button{background-color:#d67878;color:#fff;padding:10px 20px;border:none;border-radius:6px;font-weight:bold;cursor:pointer}.chat-button{position:fixed;bottom:20px;right:20px;background-color:#d67878;color:#fff;border:none;border-radius:50%;width:60px;height:60px;font-size:24px;z-index:999}.chat-window{position:fixed;bottom:90px;right:20px;width:320px;background-color:#fff;border:2px solid #d67878;border-radius:12px;display:none;flex-direction:column;box-shadow:0 4px 10px rgba(0,0,0,.2);z-index:999}.chat-header{background-color:#d67878;color:#fff;padding:10px;font-weight:bold;text-align:center}#chatMessages{max-height:250px;overflow-y:auto;padding:10px;font-size:14px;background:#fffaf4}#chatMessages p{background:#fff;margin:5px 0;padding:8px 12px;border-radius:12px;max-width:85%}.chat-footer{padding:10px;display:flex;flex-direction:column;gap:5px}.admin-section{display:none;text-align:center;background-color:#f2d2bd;margin:2rem;padding:2rem;border-radius:12px}footer small{display:block;margin-top:10px}@media (max-width:768px){nav{flex-direction:column;gap:10px}.section{padding:1rem;margin:1rem auto}.product{flex-direction:column;align-items:flex-start}.product img{width:100%;height:auto}input,select,textarea,button{font-size:16px}.chat-window{width:90%;right:5%}.chat-button{width:50px;height:50px;font-size:20px}.admin-section{margin:1rem;padding:1rem}footer{font-size:14px;padding:1rem .5rem}}.product-grid{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;text-align:center;padding:1rem}.product-card{flex:1 1 200px;max-width:240px;padding:1rem;background:#fff;border-radius:12px;transition:transform .3s ease,box-shadow .3s ease;box-shadow:0 2px 6px rgba(0,0,0,.1)}.product-card:hover{transform:scale(1.03);box-shadow:0 4px 12px rgba(0,0,0,.2)}.product-card img{width:100%;max-width:200px;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:12px;display:block;margin:0 auto 10px}figcaption{margin:10px 0;font-size:1rem;color:#4d3d3d;font-weight:bold}.cart-btn,.whatsapp-btn{margin-top:10px;padding:8px 14px;border:none;border-radius:8px;font-weight:bold;cursor:pointer;width:100%}.cart-btn{background-color:#f2d2bd;color:#4d3d3d}.whatsapp-btn{background-color:#25D366;color:#fff;margin-top:5px}@media (max-width:768px){.product-grid{flex-direction:column;align-items:center}.product-card{max-width:90%}.product-card img{max-width:100%}}</style>
+<style>
+body{font-family:'Arial',sans-serif;margin:0;background-color:#fffaf4;color:#4d3d3d;position:relative;z-index:0}
+body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;background:url('https://images.pexels.com/photos/5303025/pexels-photo-5303025.jpeg?auto=compress&cs=tinysrgb&h=650&w=940')center center/cover no-repeat;opacity:.5;filter:blur(6px);z-index:-1;pointer-events:none}
+header,footer{background-color:#f8d7da;text-align:center;padding:1rem}
+nav{background:#f2d2bd;display:flex;justify-content:center;gap:1.2rem;padding:1rem}
+nav a{text-decoration:none;color:#4d3d3d;font-weight:bold}
+.section{max-width:900px;margin:2rem auto;padding:1rem}
+.product{display:flex;flex-wrap:wrap;align-items:center;gap:20px;margin-bottom:1.5rem}
+.product img{width:100px;height:100px;flex-shrink:0;border-radius:10px;object-fit:cover}
+input,select,textarea{width:100%;padding:10px;margin:6px 0;border:1px solid #ccc;border-radius:6px}
+button{background-color:#d67878;color:#fff;padding:10px 20px;border:none;border-radius:6px;font-weight:bold;cursor:pointer}
+.chat-button{position:fixed;bottom:20px;right:20px;background-color:#d67878;color:#fff;border:none;border-radius:50%;width:60px;height:60px;font-size:24px;z-index:999}
+.chat-window{position:fixed;bottom:90px;right:20px;width:320px;background-color:#fff;border:2px solid #d67878;border-radius:12px;display:none;flex-direction:column;box-shadow:0 4px 10px rgba(0,0,0,.2);z-index:999}
+.chat-header{background-color:#d67878;color:#fff;padding:10px;font-weight:bold;text-align:center}
+#chatMessages{max-height:250px;overflow-y:auto;padding:10px;font-size:14px;background:#fffaf4}
+#chatMessages p{background:#fff;margin:5px 0;padding:8px 12px;border-radius:12px;max-width:85%}
+.chat-footer{padding:10px;display:flex;flex-direction:column;gap:5px}
+.admin-section{display:none;text-align:center;background-color:#f2d2bd;margin:2rem;padding:2rem;border-radius:12px}
+footer small{display:block;margin-top:10px}
+@media (max-width:768px){
+  nav{flex-direction:column;gap:10px}
+  .section{padding:1rem;margin:1rem auto}
+  .product{flex-direction:column;align-items:flex-start}
+  .product img{width:100%;height:auto}
+  input,select,textarea,button{font-size:16px}
+  .chat-window{width:90%;right:5%}
+  .chat-button{width:50px;height:50px;font-size:20px}
+  .admin-section{margin:1rem;padding:1rem}
+  footer{font-size:14px;padding:1rem .5rem}
+}
+.product-grid{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;text-align:center;padding:1rem}
+.product-card{flex:1 1 200px;max-width:240px;padding:1rem;background:#fff;border-radius:12px;transition:transform .3s ease,box-shadow .3s ease;box-shadow:0 2px 6px rgba(0,0,0,.1)}
+.product-card:hover{transform:scale(1.03);box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.product-card img{width:100%;max-width:200px;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:12px;display:block;margin:0 auto 10px}
+figcaption{margin:10px 0;font-size:1rem;color:#4d3d3d;font-weight:bold}
+.cart-btn,.whatsapp-btn{margin-top:10px;padding:8px 14px;border:none;border-radius:8px;font-weight:bold;cursor:pointer;width:100%}
+.cart-btn{background-color:#f2d2bd;color:#4d3d3d}
+.whatsapp-btn{background-color:#25D366;color:#fff;margin-top:5px}
+@media (max-width:768px){
+  .product-grid{flex-direction:column;align-items:center}
+  .product-card{max-width:90%}
+  .product-card img{max-width:100%}
+}
+/* --- Custom style for order form resizing and hiding footer/email --- */
+.order-form-container {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.09);
+  background: #fff;
+  min-height: 420px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+}
+.order-form-iframe {
+  width: 100%;
+  min-height: 420px;
+  height: 420px; /* fix height without scroll */
+  border: none;
+  overflow: hidden;
+  display: block;
+}
+@media (max-width: 600px) {
+  .order-form-container {
+    max-width: 99vw;
+    min-height: 480px;
+  }
+  .order-form-iframe {
+    min-height: 480px;
+    height: 480px;
+  }
+}
+</style>
 </head>
 <body>
 <header>
@@ -59,29 +135,31 @@ Custom Chocolate<br>
 </div>
 </div>
 </section>
+
 <!-- GOOGLE FORM IFRAME FOR ADD TO CART SUBMISSION -->
 <section class="section" id="order">
   <h2>Order Inquiry Form</h2>
-  <div style="width:100%;max-width:700px;margin:auto;">
+  <div class="order-form-container">
+    <!-- 
+      The Google Form URL has parameters that can be used to "hide" certain sections using the 'entry' params or by customizing the form.
+      But as a frontend developer, you can hide the footer/scrollbar visually by cropping the iframe (fixed height) and hiding the overflow.
+      If you control the form, you can also remove the email/footer in the Google Form settings.
+      Below, we visually crop/hide the unwanted portion by limiting the height.
+    -->
     <iframe 
+      class="order-form-iframe"
       src="https://docs.google.com/forms/d/e/1FAIpQLSe3scFK0zTv9CO40aUSJhvWl-tVFMiTiZYHvcfhI-CqY7arUg/viewform?embedded=true"
-      width="100%" 
-      height="900" 
-      style="border:none;overflow:auto;min-height:500px;"
-      frameborder="0" 
-      marginheight="0" 
-      marginwidth="0">
+      allowtransparency="true"
+      scrolling="no"
+      frameborder="0">
       Loading…
     </iframe>
   </div>
+  <!-- Add a note above the form if you want, e.g. your email -->
+  <div style="text-align:center;margin-top:1rem;font-size:1rem;color:#4d3d3d;">
+    For direct order help: <b>contact@wrapbot.co</b>
+  </div>
 </section>
-<style>
-@media (max-width: 600px) {
-  #order iframe {
-    height: 1200px;
-  }
-}
-</style>
 
 <section class="section" id="chatbots">
 <h2>🤖 Chatbot & WhatsApp Automation</h2>
