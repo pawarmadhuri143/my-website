@@ -312,12 +312,14 @@ function showQtyPopup(){
 
 // Section fade-in on scroll
 function revealSectionsOnScroll(){
-  const sections=document.querySelectorAll(".section");
-  const trigger=window.innerHeight*0.8;
-  sections.forEach(sec=>{
-    const boxTop=sec.getBoundingClientRect().top;
-    if(boxTop<trigger){
+  const sections = document.querySelectorAll(".section");
+  const trigger = window.innerHeight * 0.8;
+  sections.forEach(sec => {
+    const boxTop = sec.getBoundingClientRect().top;
+    if (boxTop < trigger) {
       sec.classList.add("visible");
+    } else {
+      sec.classList.remove("visible"); // <-- allow fade OUT
     }
   });
 }
