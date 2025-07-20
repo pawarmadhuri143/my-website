@@ -178,7 +178,13 @@ Custom Chocolate<br>
 <section class="section" id="order">
   <h2>Order Inquiry Form</h2>
   <div class="order-form-container">
-  <iframe 
+    <!-- 
+      The Google Form URL has parameters that can be used to "hide" certain sections using the 'entry' params or by customizing the form.
+      But as a frontend developer, you can hide the footer/scrollbar visually by cropping the iframe (fixed height) and hiding the overflow.
+      If you control the form, you can also remove the email/footer in the Google Form settings.
+      Below, we visually crop/hide the unwanted portion by limiting the height.
+    -->
+    <iframe 
       class="order-form-iframe"
       src="https://docs.google.com/forms/d/e/1FAIpQLSe3scFK0zTv9CO40aUSJhvWl-tVFMiTiZYHvcfhI-CqY7arUg/viewform?embedded=true"
       allowtransparency="true"
