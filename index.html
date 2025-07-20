@@ -80,6 +80,44 @@ figcaption{margin:10px 0;font-size:1rem;color:#4d3d3d;font-weight:bold}
     height: 480px;
   }
 }
+/* WhatsApp Fixed Chat Tab */
+.whatsapp-fixed {
+  position: fixed;
+  bottom: 100px;
+  left: 20px;
+  background-color: #25D366;
+  color: white;
+  font-weight: bold;
+  padding: 12px 16px;
+  border-radius: 30px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  text-decoration: none;
+  font-size: 16px;
+  z-index: 1000;
+}
+/* Quantity Popup */
+.quantity-popup {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #d67878;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: bold;
+  z-index: 1000;
+  display: none;
+}
+/* Section fade-in on scroll */
+.section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.6s ease-out;
+}
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 </style>
 </head>
 <body>
@@ -140,13 +178,7 @@ Custom Chocolate<br>
 <section class="section" id="order">
   <h2>Order Inquiry Form</h2>
   <div class="order-form-container">
-    <!-- 
-      The Google Form URL has parameters that can be used to "hide" certain sections using the 'entry' params or by customizing the form.
-      But as a frontend developer, you can hide the footer/scrollbar visually by cropping the iframe (fixed height) and hiding the overflow.
-      If you control the form, you can also remove the email/footer in the Google Form settings.
-      Below, we visually crop/hide the unwanted portion by limiting the height.
-    -->
-    <iframe 
+  <iframe 
       class="order-form-iframe"
       src="https://docs.google.com/forms/d/e/1FAIpQLSe3scFK0zTv9CO40aUSJhvWl-tVFMiTiZYHvcfhI-CqY7arUg/viewform?embedded=true"
       allowtransparency="true"
@@ -220,7 +252,19 @@ Custom Chocolate<br>
 <small><a href="javascript:void(0)" onclick="checkAdmin()">🔐 Access Admin Panel</a></small>
 <p style="font-size:12px;color:gray;margin-top:10px;">This website is for showcasing custom gift concepts only. We do not process payments or display prices on this site. All consultations and customizations are shared via WhatsApp or phone for personal coordination.</p>
 </footer>
-<script>const allLeads=[];let chatStep=0;let chatbotLead={name:"",phone:"",email:""};let chatbotMode="collect";const faqs={hi:"Hello! How can I help you today?",price:"We do not display prices online. Please WhatsApp us for a personalized quote.",delivery:"We deliver across the UAE in 2-3 days.",custom:"Yes, customization is available on all items.",whatsapp:"You can contact us via WhatsApp at 0507066277."};function toggleChat(){const win=document.getElementById("chatWindow");win.style.display=win.style.display==="flex"?"none":"flex";if(chatStep===0){document.getElementById("chatMessages").innerHTML=`<p><strong>GiftGenie:</strong> Hi! What's your name?</p>`}}function nextChat(){const input=document.getElementById("chatInput");const val=input.value.trim();const chatBox=document.getElementById("chatMessages");if(!val)return;chatBox.innerHTML+=`<p style="background:#d67878;color:white;"><strong>You:</strong> ${val}</p>`;if(chatbotMode==="collect"){if(chatStep===0){chatbotLead.name=val;chatBox.innerHTML+=`<p><strong>GiftGenie:</strong> What's your phone number?</p>`}else if(chatStep===1){chatbotLead.phone=val;chatBox.innerHTML+=`<p><strong>GiftGenie:</strong> And your email?</p>`}else if(chatStep===2){chatbotLead.email=val;allLeads.push({source:"Chatbot",name:chatbotLead.name,phone:chatbotLead.phone,email:chatbotLead.email,extra1:"-",extra2:"-",message:"-"});chatBox.innerHTML+=`<p><strong>GiftGenie:</strong> Thank you! I'm here to answer any questions you have 😊</p>`;chatbotLead={name:"",phone:"",email:""};chatbotMode="faq";chatStep=-1}chatStep++}else{let found=false;for(const key in faqs){if(val.toLowerCase().includes(key)){chatBox.innerHTML+=`<p><strong>GiftGenie:</strong> ${faqs[key]}</p>`;found=true;break}}if(!found){chatBox.innerHTML+=`<p><strong>GiftGenie:</strong> I'm not sure. Please WhatsApp us at 0507066277.</p>`}}input.value="";chatBox.scrollTop=chatBox.scrollHeight}function checkAdmin(){const password=prompt("Enter Admin Password:");if(password==="giftadmin123"){const admin=document.getElementById("admin");admin.style.display="block";const tableBody=document.getElementById("leadTableBody");tableBody.innerHTML="";allLeads.forEach(l=>{const row=`<tr><td>${l.source}</td><td>${l.name}</td><td>${l.phone}</td><td>${l.email||l.extra1}</td><td>${l.extra2||"-"}</td><td>${l.message||"-"}</td></tr>`;tableBody.innerHTML+=row});document.getElementById("adminDownload").style.display="block"}else{alert("Incorrect password!")}}const cart=[];function addToCart(productName){const existing=cart.find(item=>item.name===productName);if(existing){existing.qty+=1}else{cart.push({name:productName,qty:1})}updateCartUI()}function updateCartUI(){const list=document.getElementById("cart-items");const total=document.getElementById("total-qty");list.innerHTML="";let totalQty=0;cart.forEach(item=>{const li=document.createElement("li");li.innerText=`${item.qty} x ${item.name}`;list.appendChild(li);totalQty+=item.qty});total.innerText=totalQty}function toggleCart(){const cartBox=document.getElementById("cart-section");cartBox.style.display=cartBox.style.display==="block"?"none":"block"}
+<script>const allLeads=[];let chatStep=0;let chatbotLead={name:"",phone:"",email:""};let chatbotMode="collect";const faqs={hi:"Hello! How can I help you today?",price:"We do not display prices online. Please WhatsApp us for a personalized quote.",delivery:"We deliver across the UAE in 2-3 days.",custom:"Yes, customization is available on all items.",whatsapp:"You can contact us via WhatsApp at 0507066277."};
+function toggleChat(){const win=document.getElementById("chatWindow");win.style.display=win.style.display==="flex"?"none":"flex";if(chatStep===0){document.getElementById("chatMessages").innerHTML=`<p><strong>GiftGenie:</strong> Hi! What's your name?</p>`}}
+function nextChat(){const input=document.getElementById("chatInput");const val=input.value.trim();const chatBox=document.getElementById("chatMessages");if(!val)return;chatBox.innerHTML+=`<p style="background:#d67878;color:white;"><strong>You:</strong> ${val}</p>`;if(chatbotMode==="collect"){if(chatStep===0){chatbotLead.name=val;chatBox.innerHTML+=`<p><strong>GiftGenie:</strong> What's your phone number?</p>`}else if(chatStep===1){chatbotLead.phone=val;chatBox.innerHTML+=`<p><strong>GiftGenie:</strong> And your email?</p>`}else if(chatStep===2){chatbotLead.email=val;allLeads.push({source:"Chatbot",name:chatbotLead.name,phone:chatbotLead.phone,email:chatbotLead.email,extra1:"-",extra2:"-",message:"-"});chatBox.innerHTML+=`<p><strong>GiftGenie:</strong> Thank you! I'm here to answer any questions you have 😊</p>`;chatbotLead={name:"",phone:"",email:""};chatbotMode="faq";chatStep=-1}chatStep++}else{let found=false;for(const key in faqs){if(val.toLowerCase().includes(key)){chatBox.innerHTML+=`<p><strong>GiftGenie:</strong> ${faqs[key]}</p>`;found=true;break}}if(!found){chatBox.innerHTML+=`<p><strong>GiftGenie:</strong> I'm not sure. Please WhatsApp us at 0507066277.</p>`}}input.value="";chatBox.scrollTop=chatBox.scrollHeight}
+function checkAdmin(){const password=prompt("Enter Admin Password:");if(password==="giftadmin123"){const admin=document.getElementById("admin");admin.style.display="block";const tableBody=document.getElementById("leadTableBody");tableBody.innerHTML="";allLeads.forEach(l=>{const row=`<tr><td>${l.source}</td><td>${l.name}</td><td>${l.phone}</td><td>${l.email||l.extra1}</td><td>${l.extra2||"-"}</td><td>${l.message||"-"}</td></tr>`;tableBody.innerHTML+=row});document.getElementById("adminDownload").style.display="block"}else{alert("Incorrect password!")}}
+const cart=[];
+function addToCart(productName){
+  const existing=cart.find(item=>item.name===productName);
+  if(existing){existing.qty+=1}else{cart.push({name:productName,qty:1})}
+  updateCartUI();
+  showQtyPopup(); // <<-- new: show popup when item added
+}
+function updateCartUI(){const list=document.getElementById("cart-items");const total=document.getElementById("total-qty");list.innerHTML="";let totalQty=0;cart.forEach(item=>{const li=document.createElement("li");li.innerText=`${item.qty} x ${item.name}`;list.appendChild(li);totalQty+=item.qty});total.innerText=totalQty}
+function toggleCart(){const cartBox=document.getElementById("cart-section");cartBox.style.display=cartBox.style.display==="block"?"none":"block"}
 
 // --- FIXED submitCartToGoogle function below ---
 function submitCartToGoogle(){
@@ -250,7 +294,34 @@ function submitCartToGoogle(){
 }
 // --- END FIXED submitCartToGoogle function ---
 
+// WhatsApp Fixed Tab
+// Already in HTML: <a class="whatsapp-fixed" ...>
+
+// Quantity popup handler
+function showQtyPopup(){
+  const popup=document.getElementById("qtyPopup");
+  popup.style.display="block";
+  setTimeout(()=>{popup.style.display="none"},2000);
+}
+
+// Section fade-in on scroll
+function revealSectionsOnScroll(){
+  const sections=document.querySelectorAll(".section");
+  const trigger=window.innerHeight*0.8;
+  sections.forEach(sec=>{
+    const boxTop=sec.getBoundingClientRect().top;
+    if(boxTop<trigger){
+      sec.classList.add("visible");
+    }
+  });
+}
+window.addEventListener("scroll",revealSectionsOnScroll);
+window.addEventListener("load",revealSectionsOnScroll);
 </script>
+<!-- WhatsApp Fixed Tab -->
+<a class="whatsapp-fixed" href="https://wa.me/971507066277?text=Hi%2C%20I%20have%20a%20question%20about%20WrapBOT" target="_blank">💬 WhatsApp Us</a>
+<!-- Quantity popup -->
+<div class="quantity-popup" id="qtyPopup">Added to Cart 🛒</div>
 <div id="cart-section" style="position:fixed;bottom:90px;right:20px;background:#fff;padding:1rem;border-radius:12px;box-shadow:0 0 10px rgba(0,0,0,0.2);display:none;z-index:999;">
 <h3>Your Cart</h3>
 <ul id="cart-items"></ul>
